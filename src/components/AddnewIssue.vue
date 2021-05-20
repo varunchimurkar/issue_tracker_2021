@@ -168,6 +168,19 @@ export default {
   props: {
     title: String,
   },
+
+  data() {
+    return {
+      summary: null,
+      severity: "",
+      dueDate: null,
+      assignedTo: "",
+      status: "",
+      description: null,
+      usersList: [],
+      statusList: [],
+    };
+  },
 };
 </script>
 

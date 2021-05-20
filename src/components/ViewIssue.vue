@@ -60,7 +60,6 @@ export default {
   name: "ViewIssue",
   props: {
     users: Array,
-    status: Array,
   },
 };
 </script>
