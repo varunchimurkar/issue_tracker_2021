@@ -6,7 +6,7 @@
           <label>Assignee</label>
           <div>
             <select v-model="selected" class="form-control">
-              <option disabled value="">Select user</option>
+              <option disabled value="">Select User</option>
               <option
                 v-for="user in users"
                 v-bind:name="user.name"
@@ -23,14 +23,10 @@
         <div class="style1">
           <label>Status</label>
           <div>
-            <select v-model="selected" class="form-control">
-              <option disabled value="">Select user</option>
-              <option
-                v-for="user in status"
-                v-bind:name="user.name"
-                :key="user.name"
-              >
-                {{ user.name }}
+            <select v-model="selected1" class="form-control">
+              <option disabled value="">Select Status</option>
+             <option v-for="(s, i) in status" :key="i" :value="s.flag">
+              {{ s.display_flag }}
               </option>
             </select>
           </div>
@@ -60,7 +56,16 @@ export default {
   name: "ViewIssue",
   props: {
     users: Array,
+    status: Array,
   },
+
+  data(){
+    return{
+          selected: '',
+          selected1: ''
+    }
+   
+  }
 };
 </script>
 

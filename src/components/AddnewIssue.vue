@@ -18,6 +18,7 @@
             <div class="modal-content">
               <div class="modal-body">
                 <div class="modal-body__title">Add New Issue</div>
+                <br />
 
                 <div class="modal-body__form">
                   <div class="form-group">
@@ -38,7 +39,7 @@
                     <div class="form-group col-md-6 pr-md-4">
                       <label for="selectSeverity">Severity</label>
                       <select
-                        class="form-control custom-select"
+                        class="form-control"
                         id="selectSeverity"
                         v-model="severity"
                         @change="validateInput"
@@ -73,7 +74,7 @@
                     <div class="form-group col-md-6 pr-md-4">
                       <label for="selectUser">Assigned To</label>
                       <select
-                        class="form-control custom-select"
+                        class="form-control"
                         id="selectUser"
                         v-model="assignedTo"
                         @change="validateInput"
@@ -81,9 +82,9 @@
                       >
                         <option value="" disabled selected>Select User</option>
                         <option
-                          v-for="user in usersList"
-                          :key="user.id"
-                          :value="user.id"
+                          v-for="user in users"
+                          v-bind:name="user.name"
+                          :key="user.name"
                         >
                           {{ user.name }}
                         </option>
@@ -94,9 +95,9 @@
                     <div class="form-group col-md-6 pl-md-4">
                       <label for="selectStatus">Status</label>
                       <select
-                        class="form-control custom-select"
+                        class="form-control"
                         id="selectStatus"
-                        v-model="status"
+                        v-model="status1"
                         @change="validateInput"
                         required
                       >
@@ -104,7 +105,7 @@
                           Select Status
                         </option>
                         <option
-                          v-for="(s, i) in statusList"
+                          v-for="(s, i) in status"
                           :key="i"
                           :value="s.flag"
                         >
@@ -134,13 +135,17 @@
                   <button
                     type="button"
                     @click="resetModalFields"
-                    class="btn close-btn"
+                    class="btnn close-btn"
                     data-dismiss="modal"
                   >
                     Close
                   </button>
 
-                  <button type="button" class="btn save-btn" @click="saveIssue">
+                  <button
+                    type="button"
+                    class="btnn save-btn"
+                    @click="saveIssue"
+                  >
                     Save Issue
                   </button>
 
@@ -167,6 +172,8 @@ export default {
   name: "AddnewIssue",
   props: {
     title: String,
+    users: Array,
+    status: Array,
   },
 
   data() {
@@ -175,10 +182,8 @@ export default {
       severity: "",
       dueDate: null,
       assignedTo: "",
-      status: "",
+      status1: "",
       description: null,
-      usersList: [],
-      statusList: [],
     };
   },
 };
@@ -214,5 +219,34 @@ export default {
 .btn:hover {
   background-color: white;
   color: black;
+}
+
+.btnn {
+  border-radius: 3px;
+  font-family: inherit;
+  padding: 0.7em 2em;
+  margin-top: 9px;
+}
+.close-btn {
+  background-color: #0c0c0c;
+  border: 1px solid #fafcfd;
+  color: #fafbfc;
+}
+
+.save-btn {
+  float: right;
+  background-color: #08a55d;
+  border: 1px solid #08a55d;
+  color: #ffffff;
+}
+
+.modal-body {
+  color: #08090a;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.modal-body__title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
 }
 </style>

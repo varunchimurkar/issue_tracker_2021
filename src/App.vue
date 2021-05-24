@@ -1,8 +1,8 @@
 <template>
   <div>
     <Header />
-    <AddnewIssue title="All Issues" />
-    <ViewIssue :users="users" />
+    <AddnewIssue title="All Issues" :users="users" :status="status" />
+    <ViewIssue :users="users" :status="status"/>
   </div>
 </template>
 
@@ -20,33 +20,52 @@ export default {
   },
   data() {
     return {
-      users: [],
-    };
-  },
+      users: [
+        {
+          id: 1,
+          name: "Luc Hurst",
+        },
+        {
+          id: 2,
+          name: "Carl Boyce",
+        },
+        {
+          id: 3,
+          name: "Luis Marsh",
+        },
+        {
+          id: 4,
+          name: "Harlen Gill",
+        },
+        {
+          id: 5,
+          name: "Laura Morgan",
+        },
+      ],
 
-  created() {
-    this.users = [
-      {
-        id: 1,
-        name: "Luc Hurst",
+      status: [
+        {
+        flag: 'to_do',
+        display_flag: 'To Do',
+        color_class: 'secondary',
       },
       {
-        id: 2,
-        name: "Carl Boyce",
+        flag: 'in_progress',
+        display_flag: 'In Progress',
+        color_class: 'primary',
       },
       {
-        id: 3,
-        name: "Luis Marsh",
+        flag: 'done',
+        display_flag: 'Done',
+        color_class: 'success',
       },
       {
-        id: 4,
-        name: "Harlen Gill",
+        flag: 'close',
+        display_flag: 'Close',
+        color_class: 'info',
       },
-      {
-        id: 5,
-        name: "Laura Morgan",
-      },
-    ];
+      ],
+    };
   },
 };
 </script>
