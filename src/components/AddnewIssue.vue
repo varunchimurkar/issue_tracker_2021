@@ -29,8 +29,7 @@
                       id="issueSummary"
                       placeholder="Issue Summary"
                       v-model="summary"
-                      required
-                      @change="validateInput"
+                      
                     />
                     <div class="invalid-feedback"></div>
                   </div>
@@ -42,8 +41,7 @@
                         class="form-control"
                         id="selectSeverity"
                         v-model="severity"
-                        @change="validateInput"
-                        required
+                       
                       >
                         <option value="" disabled selected>
                           Select Severity
@@ -63,8 +61,7 @@
                         id="selectDueDate"
                         placeholder="select"
                         v-model="dueDate"
-                        @change="validateInput"
-                        required
+                        
                       />
                       <div class="invalid-feedback"></div>
                     </div>
@@ -77,8 +74,7 @@
                         class="form-control"
                         id="selectUser"
                         v-model="assignedTo"
-                        @change="validateInput"
-                        required
+                       
                       >
                         <option value="" disabled selected>Select User</option>
                         <option
@@ -98,8 +94,7 @@
                         class="form-control"
                         id="selectStatus"
                         v-model="status1"
-                        @change="validateInput"
-                        required
+                       
                       >
                         <option value="" disabled selected>
                           Select Status
@@ -124,8 +119,7 @@
                       placeholder="Describe the issue..."
                       rows="4"
                       v-model="description"
-                      @change="validateInput"
-                      required
+                     
                     ></textarea>
                     <div class="invalid-feedback"></div>
                   </div>
@@ -134,7 +128,7 @@
                 <div class="modal-body__actions">
                   <button
                     type="button"
-                    @click="resetModalFields"
+                   
                     class="btnn close-btn"
                     data-dismiss="modal"
                   >
@@ -185,6 +179,46 @@ export default {
       status1: "",
       description: null,
     };
+  },
+
+  methods: {
+    saveIssue(e) {
+      e.preventDefault();
+
+      if (
+        !this.summary ||
+        !this.description ||
+        !this.dueDate ||
+        this.status1 === "" ||
+        this.assignedTo === "" ||
+        this.severity === ""
+      ) {
+        alert("Please fill all input fields");
+        return;
+      }
+
+      const newload = {
+        id: Math.floor(Math.random() * 100000),
+        summary: this.summary,
+        severity: this.severity,
+        duedate: this.dueDate,
+        assignedTo: this.assignedTo,
+        status1: this.status1,
+        description: this.description,
+      };
+
+      console.log(newload);
+      
+     // this.$emit("addNewIssue", newload);
+
+      this.id = "";
+      this.summary = "";
+      this.severity = "";
+      this.duedate = "";
+      this.assignedTo = "";
+      this.status1 = "";
+      this.description = "";
+    },
   },
 };
 </script>

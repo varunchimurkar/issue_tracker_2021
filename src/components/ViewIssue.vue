@@ -23,10 +23,10 @@
         <div class="style1">
           <label>Status</label>
           <div>
-            <select v-model="selected1" class="form-control">
+            <select v-model="selectedstatus" class="form-control">
               <option disabled value="">Select Status</option>
-             <option v-for="(s, i) in status" :key="i" :value="s.flag">
-              {{ s.display_flag }}
+              <option v-for="(s, i) in status" :key="i" :value="s.flag">
+                {{ s.display_flag }}
               </option>
             </select>
           </div>
@@ -41,7 +41,7 @@
               class="form-control"
               id="dueDateFilter"
               placeholder="select"
-              v-model="dueDateFilter"
+             
             />
           </div>
         </div>
@@ -52,20 +52,24 @@
 </template>
 
 <script>
-export default {
+
+
+export default { 
+
   name: "ViewIssue",
   props: {
     users: Array,
     status: Array,
   },
 
-  data(){
-    return{
-          selected: '',
-          selected1: ''
-    }
-   
-  }
+  data() {
+    return {
+      selected: "",
+      selectedstatus: "",
+    };
+  },
+
+
 };
 </script>
 

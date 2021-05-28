@@ -1,8 +1,9 @@
 <template>
   <div>
     <Header />
-    <AddnewIssue title="All Issues" :users="users" :status="status" />
+    <AddnewIssue title="All Issues" :users="users" :status="status"/>
     <ViewIssue :users="users" :status="status"/>
+    <IssueCard  />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Header from "./components/Header";
 import AddnewIssue from "./components/AddnewIssue";
 import ViewIssue from "./components/ViewIssue";
+import IssueCard from "./components/IssueCard";
 
 export default {
   name: "App",
@@ -17,6 +19,7 @@ export default {
     Header,
     AddnewIssue,
     ViewIssue,
+    IssueCard,
   },
   data() {
     return {
@@ -65,8 +68,13 @@ export default {
         color_class: 'info',
       },
       ],
+
+      issues:[],
     };
   },
+
+ 
+
 };
 </script>
 
