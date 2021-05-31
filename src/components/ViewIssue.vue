@@ -45,21 +45,33 @@
             />
           </div>
         </div>
+
+ 
+    <div v-for="issue in issues" :key="issue.id">
+       <IssueCard :issue="issue" />
+      </div>
+
       </div>
     </div>
-    <div class="text-center mt-5">No Issue Found ☕</div>
+    <div v-if="issues.length < 1" class="text-center mt-5">No Issue Found ☕</div>
   </div>
 </template>
 
 <script>
+import IssueCard from "./IssueCard"
 
 
 export default { 
 
-  name: "ViewIssue",
+  name: 'ViewIssue',
   props: {
     users: Array,
     status: Array,
+    issues: Array,
+  },
+
+  components: {
+    IssueCard,
   },
 
   data() {

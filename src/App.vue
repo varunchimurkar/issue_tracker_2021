@@ -1,9 +1,9 @@
 <template>
   <div>
     <Header />
-    <AddnewIssue title="All Issues" :users="users" :status="status"/>
-    <ViewIssue :users="users" :status="status"/>
-    <IssueCard  />
+    <AddnewIssue title="All Issues" :users="users" :status="status" @addNewIssue="add"/>
+    <ViewIssue :users="users" :status="status" :issues="issues"/>
+    <IssueCard :issues="issues" />
   </div>
 </template>
 
@@ -69,9 +69,15 @@ export default {
       },
       ],
 
-      issues:[],
+      issues: [],
     };
   },
+
+  methods: {
+    add(IssueCard)  {
+      this.issues = [...this.issues, IssueCard]
+    },
+  }
 
  
 

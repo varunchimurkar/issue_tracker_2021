@@ -29,7 +29,6 @@
                       id="issueSummary"
                       placeholder="Issue Summary"
                       v-model="summary"
-                      
                     />
                     <div class="invalid-feedback"></div>
                   </div>
@@ -41,14 +40,13 @@
                         class="form-control"
                         id="selectSeverity"
                         v-model="severity"
-                       
                       >
                         <option value="" disabled selected>
                           Select Severity
                         </option>
-                        <option value="high">High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -61,7 +59,6 @@
                         id="selectDueDate"
                         placeholder="select"
                         v-model="dueDate"
-                        
                       />
                       <div class="invalid-feedback"></div>
                     </div>
@@ -74,7 +71,6 @@
                         class="form-control"
                         id="selectUser"
                         v-model="assignedTo"
-                       
                       >
                         <option value="" disabled selected>Select User</option>
                         <option
@@ -94,7 +90,6 @@
                         class="form-control"
                         id="selectStatus"
                         v-model="status1"
-                       
                       >
                         <option value="" disabled selected>
                           Select Status
@@ -102,7 +97,7 @@
                         <option
                           v-for="(s, i) in status"
                           :key="i"
-                          :value="s.flag"
+                          :value="s.display_flag"
                         >
                           {{ s.display_flag }}
                         </option>
@@ -119,7 +114,6 @@
                       placeholder="Describe the issue..."
                       rows="4"
                       v-model="description"
-                     
                     ></textarea>
                     <div class="invalid-feedback"></div>
                   </div>
@@ -128,7 +122,6 @@
                 <div class="modal-body__actions">
                   <button
                     type="button"
-                   
                     class="btnn close-btn"
                     data-dismiss="modal"
                   >
@@ -201,20 +194,20 @@ export default {
         id: Math.floor(Math.random() * 100000),
         summary: this.summary,
         severity: this.severity,
-        duedate: this.dueDate,
+        dueDate: this.dueDate,
         assignedTo: this.assignedTo,
         status1: this.status1,
         description: this.description,
       };
 
       console.log(newload);
-      
-     // this.$emit("addNewIssue", newload);
+
+      this.$emit("addNewIssue", newload);
 
       this.id = "";
       this.summary = "";
       this.severity = "";
-      this.duedate = "";
+      this.dueDate = "";
       this.assignedTo = "";
       this.status1 = "";
       this.description = "";
