@@ -41,29 +41,26 @@
               class="form-control"
               id="dueDateFilter"
               placeholder="select"
-             
             />
           </div>
         </div>
 
- 
-    <div v-for="issue in issues" :key="issue.id">
-       <IssueCard :issue="issue" />
-      </div>
-
+        <div v-for="issue in issues" :key="issue.id">
+          <IssueCard @delete-user="$emit('delete-user', issue.id)" :issue="issue" />
+        </div>
       </div>
     </div>
-    <div v-if="issues.length < 1" class="text-center mt-5">No Issue Found ☕</div>
+    <div v-if="issues.length < 1" class="text-center mt-5">
+      No Issue Found ☕
+    </div>
   </div>
 </template>
 
 <script>
-import IssueCard from "./IssueCard"
+import IssueCard from "./IssueCard";
 
-
-export default { 
-
-  name: 'ViewIssue',
+export default {
+  name: "ViewIssue",
   props: {
     users: Array,
     status: Array,
@@ -74,14 +71,14 @@ export default {
     IssueCard,
   },
 
+  emits: ['delete-user'],
+
   data() {
     return {
       selected: "",
       selectedstatus: "",
     };
   },
-
-
 };
 </script>
 

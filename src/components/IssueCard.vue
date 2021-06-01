@@ -5,6 +5,14 @@
     </div>
     <div class="card-body text-success">
       <h6 class="card-status">{{ issue.status1 }}</h6>
+      <span>
+        <button @click="onDelete(issue.id)" class="btndelete">Delete</button>
+      </span>
+      &nbsp;
+      <span> <button class="btnclose">Close</button> </span>
+
+      <br />
+      <br />
       <p class="card-summary">{{ issue.summary }}</p>
       <p class="card-description">{{ issue.description }}</p>
     </div>
@@ -28,18 +36,26 @@ export default {
   props: {
     issue: Object,
   },
+
+  methods: {
+    onDelete(id) {
+      this.$emit("delete-user", id);
+    },
+  },
 };
 </script>
 
 
 <style>
 .card-status {
-  border-radius: 25px;
-  background: #cecb1b;
-  padding: 15px;
-  width: 150px;
+  border-radius: 20px;
+  background: #2bca7a;
+  padding: 8px;
+  width: 115px;
   color: black;
   text-align: center;
+  display: inline-block;
+  
 }
 
 .card {
@@ -54,5 +70,29 @@ export default {
   margin-left: -188%;
   margin-top: 30%;
   width: 290%;
+}
+
+.card-summary {
+  color: black;
+}
+
+.card-description {
+  color: black;
+}
+
+.btnclose {
+  width: 80px;
+  height: 35px;
+  background-color: rgb(233, 197, 38);
+  border: none;
+  margin-left: 61%;
+}
+
+.btndelete {
+  width: 80px;
+  height: 35px;
+  background-color: rgb(230, 83, 39);
+  border: none;
+  float: right;
 }
 </style>

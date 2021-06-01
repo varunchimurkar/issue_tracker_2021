@@ -189,9 +189,13 @@ export default {
         alert("Please fill all input fields");
         return;
       }
-
+        
+         
+                 
+      
       const newload = {
-        id: Math.floor(Math.random() * 100000),
+      
+        id: Math.floor(Math.random() * 100000000000 ),
         summary: this.summary,
         severity: this.severity,
         dueDate: this.dueDate,

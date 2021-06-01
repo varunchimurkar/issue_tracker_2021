@@ -1,8 +1,13 @@
 <template>
   <div>
     <Header />
-    <AddnewIssue title="All Issues" :users="users" :status="status" @addNewIssue="add"/>
-    <ViewIssue :users="users" :status="status" :issues="issues"/>
+    <AddnewIssue
+      title="All Issues"
+      :users="users"
+      :status="status"
+      @addNewIssue="add"
+    />
+    <ViewIssue :users="users" :status="status" :issues="issues" @delete-user="DeleteUser"/>
     <IssueCard :issues="issues" />
   </div>
 </template>
@@ -48,25 +53,25 @@ export default {
 
       status: [
         {
-        flag: 'to_do',
-        display_flag: 'To Do',
-        color_class: 'secondary',
-      },
-      {
-        flag: 'in_progress',
-        display_flag: 'In Progress',
-        color_class: 'primary',
-      },
-      {
-        flag: 'done',
-        display_flag: 'Done',
-        color_class: 'success',
-      },
-      {
-        flag: 'close',
-        display_flag: 'Close',
-        color_class: 'info',
-      },
+          flag: "to_do",
+          display_flag: "To Do",
+         
+        },
+        {
+          flag: "in_progress",
+          display_flag: "In Progress",
+          
+        },
+        {
+          flag: "done",
+          display_flag: "Done",
+         
+        },
+        {
+          flag: "close",
+          display_flag: "Close",
+          
+        },
       ],
 
       issues: [],
@@ -74,13 +79,15 @@ export default {
   },
 
   methods: {
-    add(IssueCard)  {
-      this.issues = [...this.issues, IssueCard]
+    add(IssueCard) {
+      this.issues = [...this.issues, IssueCard];
     },
-  }
+  
 
- 
-
+    DeleteUser(id) {
+     this.issues = this.issues.filter((issue) => issue.id !== id)
+    }
+  },
 };
 </script>
 
