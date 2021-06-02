@@ -55,7 +55,6 @@ export default {
   color: black;
   text-align: center;
   display: inline-block;
-  
 }
 
 .card {
@@ -70,6 +69,7 @@ export default {
   margin-left: -188%;
   margin-top: 30%;
   width: 290%;
+  display: flex;
 }
 
 .card-summary {

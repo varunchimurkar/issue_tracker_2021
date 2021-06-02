@@ -7,7 +7,12 @@
       :status="status"
       @addNewIssue="add"
     />
-    <ViewIssue :users="users" :status="status" :issues="issues" @delete-user="DeleteUser"/>
+    <ViewIssue
+      :users="users"
+      :status="status"
+      :issues="issues"
+      @delete-user="DeleteUser"
+    />
     <IssueCard :issues="issues" />
   </div>
 </template>
@@ -55,22 +60,18 @@ export default {
         {
           flag: "to_do",
           display_flag: "To Do",
-         
         },
         {
           flag: "in_progress",
           display_flag: "In Progress",
-          
         },
         {
           flag: "done",
           display_flag: "Done",
-         
         },
         {
           flag: "close",
           display_flag: "Close",
-          
         },
       ],
 
@@ -82,11 +83,19 @@ export default {
     add(IssueCard) {
       this.issues = [...this.issues, IssueCard];
     },
-  
 
     DeleteUser(id) {
-     this.issues = this.issues.filter((issue) => issue.id !== id)
-    }
+      this.issues = this.issues.filter((issue) => issue.id !== id);
+    },
+  },
+
+  watch: {
+    issues(newValue) {
+      localStorage.setItem("issues", JSON.stringify(newValue));
+    },
+  },
+  mounted() {
+    this.issues = JSON.parse(localStorage.getItem("issues")) || [];
   },
 };
 </script>

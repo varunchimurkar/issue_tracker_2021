@@ -46,7 +46,10 @@
         </div>
 
         <div v-for="issue in issues" :key="issue.id">
-          <IssueCard @delete-user="$emit('delete-user', issue.id)" :issue="issue" />
+          <IssueCard
+            @delete-user="$emit('delete-user', issue.id)"
+            :issue="issue"
+          />
         </div>
       </div>
     </div>
@@ -71,7 +74,7 @@ export default {
     IssueCard,
   },
 
-  emits: ['delete-user'],
+  emits: ["delete-user"],
 
   data() {
     return {
