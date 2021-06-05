@@ -1,5 +1,5 @@
 <template>
-  <div class="card border-dark mb-3">
+  <div v-show="showdata" class="card border-dark mb-3">
     <div class="card-header bg-transparent border-dark">
       Issue ID {{ issue.id }}
     </div>
@@ -9,10 +9,12 @@
         <button @click="onDelete(issue.id)" class="btndelete">Delete</button>
       </span>
       &nbsp;
-      <span> <button class="btnclose">Close</button> </span>
-
-      <br />
-      <br />
+      <span
+        ><button class="btnclose" @click.prevent="showdata1()">
+          Close
+        </button></span
+      >
+      <br /><br />
       <p class="card-summary">{{ issue.summary }}</p>
       <p class="card-description">{{ issue.description }}</p>
     </div>
@@ -37,9 +39,19 @@ export default {
     issue: Object,
   },
 
+  data() {
+    return {
+      showdata: true,
+    };
+  },
+
   methods: {
     onDelete(id) {
       this.$emit("delete-user", id);
+    },
+
+    showdata1() {
+      this.showdata = false;
     },
   },
 };
