@@ -9,11 +9,7 @@
         <button @click="onDelete(issue.id)" class="btndelete">Delete</button>
       </span>
       &nbsp;
-      <span
-        ><button class="btnclose" @click.prevent="showdata1()">
-          Close
-        </button></span
-      >
+      <span><button class="btnclose" @click="showdata1()">Close</button></span>
       <br /><br />
       <p class="card-summary">{{ issue.summary }}</p>
       <p class="card-description">{{ issue.description }}</p>

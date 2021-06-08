@@ -3,10 +3,10 @@
     <div class="form-row">
       <div class="form-group col-md-3 mr-sm-3">
         <div class="style1">
-          <label>Assignee</label>
+          <label for="selected">Assignee</label>
           <div>
-            <select v-model="selected" class="form-control">
-              <option disabled value="">Select User</option>
+            <select v-model="selected" id="selected" class="form-control">
+              <option value="">Select User</option>
               <option
                 v-for="user in users"
                 v-bind:name="user.name"
@@ -21,10 +21,14 @@
 
       <div class="form-group col-md-3 mr-sm-3">
         <div class="style1">
-          <label>Status</label>
+          <label for="selectedstatus">Status</label>
           <div>
-            <select v-model="selectedstatus" class="form-control">
-              <option disabled value="">Select Status</option>
+            <select
+              v-model="selectedstatus"
+              id="selectedstatus"
+              class="form-control"
+            >
+              <option value="">Select Status</option>
               <option v-for="(s, i) in status" :key="i" :value="s.flag">
                 {{ s.display_flag }}
               </option>
@@ -82,6 +86,18 @@ export default {
       selectedstatus: "",
     };
   },
+
+computed: {
+    issues() {
+      if (this.selectedstatus) {
+        return this.issues.filter(
+          (issue) => issue.status1 === this.selectedstatus
+        );
+      }
+      return [];
+    },
+  },
+  
 };
 </script>
 
