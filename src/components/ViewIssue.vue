@@ -29,7 +29,7 @@
               class="form-control"
             >
               <option value="">Select Status</option>
-              <option v-for="(s, i) in status" :key="i" :value="s.flag">
+              <option v-for="(s, i) in status" :key="i" :value="s.display_flag">
                 {{ s.display_flag }}
               </option>
             </select>
@@ -51,7 +51,7 @@
 
         <div v-for="issue in issues" :key="issue.id">
           <IssueCard
-            @delete-user="$emit('delete-user', issue.id)"
+            @deleteuser="$emit('deleteuser', issue.id)"
             :issue="issue"
           />
         </div>
@@ -78,7 +78,7 @@ export default {
     IssueCard,
   },
 
-  emits: ["delete-user"],
+  emits: ['deleteuser'],
 
   data() {
     return {
@@ -88,7 +88,7 @@ export default {
   },
 
 computed: {
-    issues() {
+    issuesW() {
       if (this.selectedstatus) {
         return this.issues.filter(
           (issue) => issue.status1 === this.selectedstatus

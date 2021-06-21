@@ -11,7 +11,8 @@
       :users="users"
       :status="status"
       :issues="issues"
-      @delete-user="DeleteUser"
+      @deleteuser="DeleteUser" 
+      
     />
     <IssueCard :issues="issues" />
   </div>

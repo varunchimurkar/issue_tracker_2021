@@ -33,6 +33,7 @@ export default {
 
   props: {
     issue: Object,
+    
   },
 
   data() {
@@ -43,7 +44,7 @@ export default {
 
   methods: {
     onDelete(id) {
-      this.$emit("delete-user", id);
+      this.$emit('deleteuser', id);
     },
 
     showdata1() {
